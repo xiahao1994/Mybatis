@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource=""></properties><!--加载配置文件-->
+    <settings>
+        <!--开启二级缓存，默认开启-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <typeAliases>
+
+        <!--设置单个pojo别名-->
+        <!--<typeAlias alias="Employee" type="com.yang.domain.Employee"/>-->
+        <!--对整个包下的pojo设置别名，别名为类名，如果类上使用了@Alias("")注解指定了别名则用注解设置的-->
+        <package name="com.yang.domain"/>
+    </typeAliases>
+    <!--与Spring整合后，environment配置将废除-->
+    <environments default="development">
+        <environment id="development">
+            <!--使用jdbc事务管理，由mybatis自己管理-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据库连接池，由mybatis自己管理-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://212.64.59.43:3306/mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="new_password"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--我们写的sql映射文件-->
+    <mappers>
+        <mapper resource="testmybatis/xiahao/mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
