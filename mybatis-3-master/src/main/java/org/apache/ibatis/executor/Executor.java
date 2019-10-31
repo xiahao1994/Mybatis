@@ -29,6 +29,8 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Clinton Begin
+ * 执行器是一个接口（基本执行器、缓存执行器）
+ * 作用：SqlSession 内部通过执行器操作数据库
  */
 public interface Executor {
 

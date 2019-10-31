@@ -30,6 +30,8 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ * 底层封装对象
+ * 作用：对操作数据库存储封装，包括 sql 语句、输入输出参数
  */
 public final class MappedStatement {
 

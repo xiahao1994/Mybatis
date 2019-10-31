@@ -18,11 +18,12 @@ public class Test {
     InputStream inputStream = null;
     try {
       inputStream = Resources.getResourceAsStream(resource);
-      SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+      SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);//DefaultSqlSessionFactory
       // 2、获取sqlSession对象
       SqlSession openSession = sqlSessionFactory.openSession();
       try {
         User user = openSession.selectOne("testmybatis.xiahao.mapper.UserMapper.selectByPrimaryKey",1);
+        System.out.println(user.toString());
         // 3、获取接口的实现类对象
         //会为接口自动的创建一个代理对象，代理对象去执行增删改查方法
 //      Employee employee = (Employee) openSession.selectOne(

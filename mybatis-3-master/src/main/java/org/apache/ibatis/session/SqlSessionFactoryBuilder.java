@@ -61,6 +61,7 @@ public class SqlSessionFactoryBuilder {
   }
 
   public SqlSessionFactory build(InputStream inputStream) {
+    //xh build
     return build(inputStream, null, null);
   }
 
@@ -72,9 +73,18 @@ public class SqlSessionFactoryBuilder {
     return build(inputStream, null, properties);
   }
 
+  /**
+   * 构建SqlSessionFactory
+   * @param inputStream
+   * @param environment
+   * @param properties
+     * @return
+     */
   public SqlSessionFactory build(InputStream inputStream, String environment, Properties properties) {
     try {
+      //xh XMLConfigBuilder
       XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, environment, properties);
+      //xh build
       return build(parser.parse());
     } catch (Exception e) {
       throw ExceptionFactory.wrapException("Error building SqlSession.", e);
@@ -89,6 +99,7 @@ public class SqlSessionFactoryBuilder {
   }
 
   public SqlSessionFactory build(Configuration config) {
+    //xh
     return new DefaultSqlSessionFactory(config);
   }
 

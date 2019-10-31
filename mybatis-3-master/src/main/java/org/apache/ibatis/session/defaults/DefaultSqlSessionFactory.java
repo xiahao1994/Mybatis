@@ -88,6 +88,7 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
   }
 
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
+    //xh
     Transaction tx = null;
     try {
       final Environment environment = configuration.getEnvironment();

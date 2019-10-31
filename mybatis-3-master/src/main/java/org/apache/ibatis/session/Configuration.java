@@ -96,7 +96,7 @@ import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
- * @author Clinton Begin
+ * 管理 mysql-config.xml 全局配置关系类
  */
 public class Configuration {
 

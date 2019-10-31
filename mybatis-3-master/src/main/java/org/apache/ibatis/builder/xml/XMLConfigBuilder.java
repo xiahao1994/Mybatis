@@ -122,6 +122,32 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   <configuration>
+   <properties resource=""/>
+   <settings>
+     <setting name="cacheEnabled" value="true"/>
+   </settings>
+   <typeAliases>
+     <package name="com.yang.domain"/>
+   </typeAliases>
+   <environments default="development">
+     <environment id="development">
+       <transactionManager type="JDBC"/>
+       <dataSource type="POOLED">
+         <property name="driver" value="com.mysql.jdbc.Driver"/>
+         <property name="url" value="jdbc:mysql://212.64.59.43:3306/mybatis"/>
+         <property name="username" value="root"/>
+         <property name="password" value="new_password"/>
+       </dataSource>
+     </environment>
+   </environments>
+     <mappers>
+      <mapper resource="testmybatis/xiahao/mapper/UserMapper.xml"/>
+     </mappers>
+   </configuration>
+     */
+
   private Properties settingsAsProperties(XNode context) {
     if (context == null) {
       return new Properties();
