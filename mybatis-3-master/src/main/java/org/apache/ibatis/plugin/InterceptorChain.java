@@ -27,6 +27,7 @@ public class InterceptorChain {
   private final List<Interceptor> interceptors = new ArrayList<>();
 
   public Object pluginAll(Object target) {
+    /*--------xh-------源码分析记录点:遍历出发所有的拦截器--------*/
     for (Interceptor interceptor : interceptors) {
       target = interceptor.plugin(target);
     }

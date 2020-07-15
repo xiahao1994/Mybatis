@@ -61,7 +61,7 @@ public class SqlSessionFactoryBuilder {
   }
 
   public SqlSessionFactory build(InputStream inputStream) {
-    //xh build
+    /*--------xh-------源码分析记录点:org.apache.ibatis.session.SqlSessionFactoryBuilder.build(java.io.InputStream, java.lang.String, java.util.Properties)--------*/
     return build(inputStream, null, null);
   }
 
@@ -82,9 +82,9 @@ public class SqlSessionFactoryBuilder {
      */
   public SqlSessionFactory build(InputStream inputStream, String environment, Properties properties) {
     try {
-      //xh XMLConfigBuilder
+      /*--------xh-------源码分析记录点:org.apache.ibatis.builder.xml.XMLConfigBuilder--------*/
       XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, environment, properties);
-      //xh build
+      /*--------xh-------源码分析记录点:org.apache.ibatis.session.SqlSessionFactoryBuilder.build(org.apache.ibatis.session.Configuration)--------*/
       return build(parser.parse());
     } catch (Exception e) {
       throw ExceptionFactory.wrapException("Error building SqlSession.", e);
@@ -99,7 +99,7 @@ public class SqlSessionFactoryBuilder {
   }
 
   public SqlSessionFactory build(Configuration config) {
-    //xh
+    /*--------xh-------源码分析记录点:调用的是DefaultSqlSessionFactory--------*/
     return new DefaultSqlSessionFactory(config);
   }
 

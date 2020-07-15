@@ -599,6 +599,7 @@ public class Configuration {
   }
 
   public Executor newExecutor(Transaction transaction, ExecutorType executorType) {
+     /*--------xh-------源码分析记录点:根据executorType构建Executor--------*/
     executorType = executorType == null ? defaultExecutorType : executorType;
     executorType = executorType == null ? ExecutorType.SIMPLE : executorType;
     Executor executor;
@@ -607,11 +608,14 @@ public class Configuration {
     } else if (ExecutorType.REUSE == executorType) {
       executor = new ReuseExecutor(this, transaction);
     } else {
+       /*--------xh-------源码分析记录点:  默认是构建的SimpleExecutor--------*/
       executor = new SimpleExecutor(this, transaction);
     }
     if (cacheEnabled) {
+      /*--------xh-------源码分析记录点:  CachingExecutor，默认开启一级缓存，委托--------*/
       executor = new CachingExecutor(executor);
     }
+    /*--------xh-------源码分析记录点: Mybatis插件pluginAll--------*/
     executor = (Executor) interceptorChain.pluginAll(executor);
     return executor;
   }

@@ -37,13 +37,14 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
   private final Configuration configuration;
-
+  /*--------xh-------源码分析记录点:构造函数--------*/
   public DefaultSqlSessionFactory(Configuration configuration) {
     this.configuration = configuration;
   }
 
   @Override
   public SqlSession openSession() {
+    /*--------xh-------源码分析记录点:org.apache.ibatis.session.defaults.DefaultSqlSessionFactory.openSessionFromDataSource--------*/
     return openSessionFromDataSource(configuration.getDefaultExecutorType(), null, false);
   }
 
@@ -88,12 +89,15 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
   }
 
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
-    //xh
+
+    /*--------xh-------源码分析记录点:--------*/
     Transaction tx = null;
     try {
       final Environment environment = configuration.getEnvironment();
       final TransactionFactory transactionFactory = getTransactionFactoryFromEnvironment(environment);
+       /*--------xh-------源码分析记录点:事务配置 org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory.newTransaction(javax.sql.DataSource, org.apache.ibatis.session.TransactionIsolationLevel, boolean)--------*/
       tx = transactionFactory.newTransaction(environment.getDataSource(), level, autoCommit);
+      /*--------xh-------源码分析记录点:Executor --------*/
       final Executor executor = configuration.newExecutor(tx, execType);
       return new DefaultSqlSession(configuration, executor, autoCommit);
     } catch (Exception e) {

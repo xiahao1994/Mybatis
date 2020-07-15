@@ -95,13 +95,16 @@ public class XMLConfigBuilder extends BaseBuilder {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
     parsed = true;
+    /*--------xh-------源码分析记录点:org.apache.ibatis.parsing.XPathParser.evalNode(java.lang.String)--------*/
     parseConfiguration(parser.evalNode("/configuration"));
     return configuration;
   }
 
   private void parseConfiguration(XNode root) {
     try {
+
       //issue #117 read properties first
+       /*--------xh-------源码分析记录点:org.apache.ibatis.builder.xml.XMLConfigBuilder.propertiesElement--------*/
       propertiesElement(root.evalNode("properties"));
       Properties settings = settingsAsProperties(root.evalNode("settings"));
       loadCustomVfs(settings);
@@ -245,6 +248,7 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   private void propertiesElement(XNode context) throws Exception {
+    /*--------xh-------源码分析记录点:resource/url--------*/
     if (context != null) {
       Properties defaults = context.getChildrenAsProperties();
       String resource = context.getStringAttribute("resource");
