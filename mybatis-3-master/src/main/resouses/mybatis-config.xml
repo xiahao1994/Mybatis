@@ -8,7 +8,7 @@
         <!--开启二级缓存，默认开启-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
-  <!--  <typeAliases>
+  <!--<typeAliases>
 
         &lt;!&ndash;设置单个pojo别名&ndash;&gt;
         &lt;!&ndash;<typeAlias alias="Employee" type="com.yang.domain.Employee"/>&ndash;&gt;

@@ -25,11 +25,13 @@ public class Test {
       SqlSession openSession = sqlSessionFactory.openSession();
       try {
         User user = openSession.selectOne("testmybatis.xiahao.mapper.UserMapper.selectByPrimaryKey",1);
+        //测试缓存，只打印了一次sql说明只查询了一次数据库
+        User user2 = openSession.selectOne("testmybatis.xiahao.mapper.UserMapper.selectByPrimaryKey",1);
+        User user3 = openSession.selectOne("testmybatis.xiahao.mapper.UserMapper.selectByPrimaryKey",1);
         System.out.println(user.toString());
-        // 3、获取接口的实现类对象
-        //会为接口自动的创建一个代理对象，代理对象去执行增删改查方法
-//      Employee employee = (Employee) openSession.selectOne(
-//      "com.atguigu.mybatis.EmployeeMapper.selectEmp", 1);
+        //查询的对象是一个，指向一个对象
+        System.out.println(user2.toString());
+        System.out.println(user3.toString());
       } finally {
         openSession.close();
       }

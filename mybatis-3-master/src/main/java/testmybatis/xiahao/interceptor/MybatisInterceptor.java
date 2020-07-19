@@ -48,14 +48,6 @@ public class MybatisInterceptor implements Interceptor {
     String sqlCommandType = mappedStatement.getSqlCommandType().toString();
     System.out.println("类型 ==> " + sqlCommandType);
     BoundSql boundSql = statementHandler.getBoundSql();
-       /* //获取到原始sql语句
-        String sql = boundSql.getSql();
-        *//*String mSql = sql + " limit 1"*//*;
-        //通过反射修改sql语句
-        Field field = boundSql.getClass().getDeclaredField("sql");
-        field.setAccessible(true);
-        field.set(boundSql, sql);
-        System.out.println(""+sql);*/
     // 获取节点的配置
     Configuration configuration = mappedStatement.getConfiguration();
     // 获取到最终的sql语句
