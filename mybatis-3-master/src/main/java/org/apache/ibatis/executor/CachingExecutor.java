@@ -106,6 +106,7 @@ public class CachingExecutor implements Executor {
         return list;
       }
     }
+    /*--------xh-------源码分析记录点:org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement, java.lang.Object, org.apache.ibatis.session.RowBounds, org.apache.ibatis.session.ResultHandler, org.apache.ibatis.cache.CacheKey, org.apache.ibatis.mapping.BoundSql)--------*/
     return delegate.query(ms, parameterObject, rowBounds, resultHandler, key, boundSql);
   }
 

@@ -780,6 +780,7 @@ public class Configuration {
   }
 
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
+    /*--------xh-------源码分析记录点:org.apache.ibatis.binding.MapperRegistry.getMapper--------*/
     return mapperRegistry.getMapper(type, sqlSession);
   }
 

@@ -48,7 +48,9 @@ public class MapperProxyFactory<T> {
   }
 
   public T newInstance(SqlSession sqlSession) {
+    /*--------xh-------源码分析记录点:MapperProxy 构造函数--------*/
     final MapperProxy<T> mapperProxy = new MapperProxy<>(sqlSession, mapperInterface, methodCache);
+    /*--------xh-------源码分析记录点:创建Mapper的代理类MapperProxy--------*/
     return newInstance(mapperProxy);
   }
 
